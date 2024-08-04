@@ -25,10 +25,10 @@ app.add_middleware(
 # Mount your static files
 app.mount("/UI", StaticFiles(directory="UI"), name="UI")
 
+
 @app.get("/")
 async def read_root():
     return FileResponse("UI/index.html")
-
 
 
 model, scaler = load_model()

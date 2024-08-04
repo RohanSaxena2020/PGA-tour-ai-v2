@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Calculate Golfer's Scoring Average</title>
+        <link href="/UI/output.css" rel="stylesheet" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        />
+        <style>
+            .input-field {
+                color: #333;
+            }
+            .input-field::placeholder {
+                color: #666;
+            }
+        </style>
+    </head>
+    <body
+        class="bg-cover bg-center h-screen text-white"
+        style="background-image: url(&quot;/UI/golf_course.png&quot;)"
+    >
+        <header class="bg-black p-4 text-left w-full">
+            <h1 class="text-2xl font-bold">
+                Golfer.<span class="text-green-500">AI</span>
+            </h1>
+        </header>
+        <div
+            class="flex flex-col items-center justify-center text-center h-full"
+        >
+            <div
+                class="bg-gray-800 bg-opacity-70 p-8 rounded-lg grid grid-cols-1 md:grid-cols-2 gap-4"
+            >
+                <h2 class="col-span-2 text-center text-2xl font-bold mb-4">
+                    Input Your Golfer's Stats
+                </h2>
+                <div class="flex flex-col items-center">
+                    <h3 class="text-white mb-2">Strokes Gained Off the Tee</h3>
+                    <input
+                        type="text"
+                        id="sg_ott"
+                        placeholder="SG OTT"
+                        class="p-2 rounded border border-gray-300 w-64 input-field"
+                    />
+                </div>
+                <div class="flex flex-col items-center">
+                    <h3 class="text-white mb-2">Strokes Gained Approach</h3>
+                    <input
+                        type="text"
+                        id="sg_app"
+                        placeholder="SG APP"
+                        class="p-2 rounded border border-gray-300 w-64 input-field"
+                    />
+                </div>
+                <div class="flex flex-col items-center">
+                    <h3 class="text-white mb-2">
+                        Strokes Gained Around the Green
+                    </h3>
+                    <input
+                        type="text"
+                        id="sg_atg"
+                        placeholder="SG ATG"
+                        class="p-2 rounded border border-gray-300 w-64 input-field"
+                    />
+                </div>
+                <div class="flex flex-col items-center">
+                    <h3 class="text-white mb-2">Strokes Gained Putting</h3>
+                    <input
+                        type="text"
+                        id="sg_putting"
+                        placeholder="SG PUTTING"
+                        class="p-2 rounded border border-gray-300 w-64 input-field"
+                    />
+                </div>
+                <div class="flex flex-col items-center">
+                    <h3 class="text-white mb-2">Birdie Average</h3>
+                    <input
+                        type="text"
+                        id="birdie_avg"
+                        placeholder="Birdie Avg"
+                        class="p-2 rounded border border-gray-300 w-64 input-field"
+                    />
+                </div>
+                <div class="flex flex-col items-center">
+                    <h3 class="text-white mb-2">Driving Distance (yards)</h3>
+                    <input
+                        type="text"
+                        id="driving_dist_yds"
+                        placeholder="Driving Dist (yards)"
+                        class="p-2 rounded border border-gray-300 w-64 input-field"
+                    />
+                </div>
+                <div class="flex flex-col items-center">
+                    <h3 class="text-white mb-2">GIR Percentage</h3>
+                    <input
+                        type="text"
+                        id="gir_pct"
+                        placeholder="GIR % (enter as a decimal)"
+                        class="p-2 rounded border border-gray-300 w-64 input-field"
+                    />
+                </div>
+                <button
+                    onclick="calculateScoringAverage()"
+                    class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-4 col-span-2"
+                >
+                    Calculate Scoring Average
+                </button>
+                <div id="result" class="col-span-2 text-2xl mt-4"></div>
+            </div>
+        </div>
+        <footer class="bg-black p-4 text-center w-full">
+            <div class="flex flex-col items-center">
+                <p class="text-sm mb-2">
+                    Copyright 2024 & Beyond, Rohan Saxena © - All Rights
+                    Reserved
+                </p>
+                <div class="flex space-x-4">
+                    <a
+                        href="https://www.linkedin.com/in/rohan-saxena-ai/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="hover:text-blue-400 transition duration-300"
+                    >
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a
+                        href="https://github.com/RohanSaxena2020"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="hover:text-blue-400 transition duration-300"
+                    >
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+        <script src="/UI/app.js"></script>
+    </body>
+</html>
