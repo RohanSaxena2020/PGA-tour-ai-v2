@@ -6,6 +6,7 @@ from util import load_model, predict_scoring_average
 import numpy as np
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+import os
 
 app = FastAPI()
 
@@ -15,14 +16,14 @@ logging.basicConfig(level=logging.INFO)
 # Add CORS middleware for frontend communication
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:5500"],
+    allow_origins=["*"],  # Allow all origins for Replit deployment
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Mount your static files (if you have any)
-app.mount("/static", StaticFiles(directory="UI"), name="static")
+# Mount your static files
+app.mount("/UI", StaticFiles(directory="UI"), name="UI")
 
 
 @app.get("/")
@@ -30,8 +31,7 @@ async def read_root():
     return FileResponse('UI/index.html')
 
 
-model, scaler = load_model(
-)  # Assuming load_model now returns both the model and the scaler
+model, scaler = load_model()
 
 
 class PredictionInput(BaseModel):
@@ -47,15 +47,12 @@ class PredictionInput(BaseModel):
 @app.post("/predict/")
 async def predict(input_data: PredictionInput):
     try:
-        # Convert input data to numpy array and scale
         data = np.array([[
             input_data.sg_ott, input_data.sg_app, input_data.sg_atg,
             input_data.sg_putting, input_data.birdie_avg,
             input_data.driving_dist_yds, input_data.gir_pct
         ]])
         scaled_data = scaler.transform(data)
-
-        # Predict the scoring average
         result = predict_scoring_average(model, scaled_data)
         return {"scoring_average": result}
     except Exception as e:
@@ -66,4 +63,5 @@ async def predict(input_data: PredictionInput):
 
 if __name__ == '__main__':
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    port = int(os.environ.get("PORT", 8080))
+    uvicorn.run(app, host="0.0.0.0", port=port)
