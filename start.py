@@ -1,6 +1,5 @@
-import subprocess
 import os
-import argparse
+import subprocess
 import time
 
 def run_command(command, shell=True):
@@ -8,26 +7,20 @@ def run_command(command, shell=True):
     return process
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--port', type=int, default=8000, help='Port for the backend server')
-    parser.add_argument('--frontend-port', type=int, default=5500, help='Port for the frontend server')
-    args = parser.parse_args()
-
-    # Change to the project root directory
-    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    port = int(os.environ.get("PORT", 8000))
+    frontend_port = int(os.environ.get("FRONTEND_PORT", 5500))
 
     # Start the backend server
-    server_process = run_command(f"python server/server.py --port {args.port}")
+    server_process = run_command(f"python server/server.py --port {port}")
 
-    # Build and start frontend server
-    frontend_process = run_command(f"cd UI && npm run start")
+    # Start a simple HTTP server for the frontend
+    frontend_process = run_command(f"cd UI && python -m http.server {frontend_port}")
 
-    print(f"Backend is running on port {args.port}")
-    print(f"Frontend is running on port {args.frontend_port}")
+    print(f"Backend is running on port {port}")
+    print(f"Frontend is running on port {frontend_port}")
     print("Application is running. Press CTRL+C to stop.")
 
     try:
-        # Keep the script running
         while True:
             time.sleep(1)
     except KeyboardInterrupt:
