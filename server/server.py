@@ -26,7 +26,6 @@ class PredictionInput(BaseModel):
     sg_app: float
     sg_atg: float
     sg_putting: float
-    sg_ttg: float
     birdie_avg: float
     driving_dist_yds: float
     gir_pct: float
@@ -40,7 +39,6 @@ async def predict(input_data: PredictionInput):
             input_data.sg_app,
             input_data.sg_atg,
             input_data.sg_putting,
-            input_data.sg_ttg,
             input_data.birdie_avg,
             input_data.driving_dist_yds,
             input_data.gir_pct

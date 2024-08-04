@@ -3,7 +3,6 @@ function calculateScoringAverage() {
     const sgAPP = parseFloat(document.getElementById('sg_app').value);
     const sgATG = parseFloat(document.getElementById('sg_atg').value);
     const sgPutting = parseFloat(document.getElementById('sg_putting').value);
-    const sgTTG = parseFloat(document.getElementById('sg_ttg').value);
     const birdieAvg = parseFloat(document.getElementById('birdie_avg').value);
     const drivingDistYds = parseFloat(document.getElementById('driving_dist_yds').value);
     const girPct = parseFloat(document.getElementById('gir_pct').value);
@@ -13,7 +12,6 @@ function calculateScoringAverage() {
         sg_app: sgAPP,
         sg_atg: sgATG,
         sg_putting: sgPutting,
-        sg_ttg: sgTTG,
         birdie_avg: birdieAvg,
         driving_dist_yds: drivingDistYds,
         gir_pct: girPct
