@@ -4,7 +4,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "tailwindcss -i ./tailwind.css -o ./output.css",
+    "build:css": "tailwindcss -i ../tailwind.css -o ./output.css",
     "build": "npm run build:css",
     "start": "npm run build && python -m http.server 5500",
     "dev": "npm run build:css -- --watch"
