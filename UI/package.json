@@ -1,15 +1,18 @@
 {
-  "name": "ui",
+  "name": "golfer-ai",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1", 
-    "build:css": "tailwindcss -i ./tailwind.css -o ./output.css --watch"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "tailwindcss -i ./tailwind.css -o ./output.css",
+    "build": "npm run build:css",
+    "start": "npm run build && python -m http.server 5500",
+    "dev": "npm run build:css -- --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Golfer AI Scoring Prediction",
   "devDependencies": {
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.39",
