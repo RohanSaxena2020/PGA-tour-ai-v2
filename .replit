@@ -5,5 +5,5 @@ run = "npm run build && pip install -r requirements.txt"
 channel = "stable-24_05"
 
 [deployment]
-run = ["sh", "-c", "python server/server.py"]
-build = ["sh", "-c", "npm run build && pip install -r requirements.txt"]
+run = "npm start"
+build = "npm install && cd UI && npm install && npm run build && cd .. && pip install -r requirements.txt"
