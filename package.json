@@ -1,15 +1,11 @@
 {
-    "name": "golfer-ai-root",
-    "version": "1.0.0",
-    "scripts": {
-      "start:backend": "python server/server.py",
-      "start:frontend": "cd ui && npm run build:css && python -m http.server 5500",
-      "start": "python start.py",
-      "build": "cd UI && npm install && npm run build",
-      "dev": "python start.py & cd ui && npm run build:css -- --watch"
-    }
-
-    
+  "name": "golfer-ai-root",
+  "version": "1.0.0",
+  "scripts": {
+    "start:backend": "python server/server.py",
+    "start:frontend": "cd UI && npm run build:css && python -m http.server 5500",
+    "start": "python server/server.py",
+    "build": "cd UI && npm install && npm run build",
+    "dev": "python start.py & cd UI && npm run build:css -- --watch"
   }
-
-  
+}
